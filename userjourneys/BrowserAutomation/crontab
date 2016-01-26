@@ -3,6 +3,6 @@ MAILTO=""
 */5 * * * * python /opt/scripts/userjourneys/BrowserAutomation/synthetic-user-journey.py -c jw/dev
 */5 * * * * python /opt/scripts/userjourneys/BrowserAutomation/synthetic-user-journey.py -c jw/ie
 #*/5 * * * * python /opt/scripts/userjourneys/BrowserAutomation/synthetic-user-journey.py -c arg/ar
-*/5 * * * * python /opt/scripts/userjourneys/BrowserAutomation/synthetic-user-journey.py -c arg/ar
+*/5 * * * * python /opt/scripts/userjourneys/BrowserAutomation/synthetic-user-journey.py -c arg/dev
 */5 * * * * python /opt/scripts/userjourneys/BrowserAutomation/synthetic-user-journey.py -c csg/bb
 */5 * * * * python /opt/scripts/userjourneys/BrowserAutomation/synthetic-user-journey.py -c csg/wh
