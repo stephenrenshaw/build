@@ -1,0 +1,13 @@
+[Unit]
+Description=Job scheduler & proxy 
+Requires=selenium-hub.service
+After=selenium-node.service
+
+[Service]
+ExecStartPre=/usr/bin/docker run -p 9090-9121:9090-9121 --name proxy itboffin/browsermob-proxy
+ExecStart=/usr/bin/docker run --name scheduler itboffin/centos /sbin/init
+ExecStop=/usr/bin/docker stop scheduler proxy
+ExecStopPost=/usr/bin/docker rm scheduler proxy
+
+[Install]
+WantedBy=multi-user.target
