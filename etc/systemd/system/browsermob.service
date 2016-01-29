@@ -1,0 +1,13 @@
+[Unit]
+Description=Job scheduler with monitoring agent
+Requires=selenium-hub.service
+After=selenium-hub.service
+
+[Service]
+TimeoutStartSec=60
+ExecStartPre=-/usr/bin/docker rm scheduler
+ExecStart=/usr/bin/docker run --name scheduler --privileged --publish 5666:5666 itboffin/scheduler /sbin/init
+ExecStop=/usr/bin/docker stop scheduler
+
+[Install]
+WantedBy=multi-user.target
