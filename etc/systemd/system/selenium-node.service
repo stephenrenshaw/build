@@ -4,7 +4,7 @@ Requires=selenium-hub.service
 After=selenium-hub.service
 
 [Service]
-ExecStartPre=/usr/bin/docker run --link hub:hub --name chrome itboffin/node-chrome
+ExecStartPre=-/usr/bin/docker run --link hub:hub --name chrome itboffin/node-chrome
 ExecStart=/usr/bin/docker run --link hub:hub --name firefox itboffin/node-firefox
 ExecStop=/usr/bin/docker stop chrome firefox 
 ExecStopPost=/usr/bin/docker rm firefox chrome
