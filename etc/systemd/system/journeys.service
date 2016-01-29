@@ -1,11 +1,11 @@
 [Unit]
-Description=Job scheduler & proxy 
+Description=Job scheduler & proxy with monitoring agent
 Requires=selenium-hub.service
 After=selenium-node.service
 
 [Service]
 ExecStartPre=/usr/bin/docker run -p 9090-9121:9090-9121 --name proxy itboffin/browsermob-proxy
-ExecStart=/usr/bin/docker run --name scheduler itboffin/centos /sbin/init
+ExecStart=/usr/bin/docker run --name scheduler --privileged --publish 5666:5666 itboffin/scheduler /sbin/init
 ExecStop=/usr/bin/docker stop scheduler proxy
 ExecStopPost=/usr/bin/docker rm scheduler proxy
 
