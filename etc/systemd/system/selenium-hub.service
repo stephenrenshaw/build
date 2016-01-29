@@ -1,12 +1,13 @@
 [Unit]
 Description=Selenium Hub
-Requires=docker.service
-After=docker.service
+Requires=docker-tcp.socket
+After=docker-tcp.socket
 
 [Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker rm hub
 ExecStart=/usr/bin/docker run -p 4444:4444 --name hub itboffin/hub
 ExecStop=/usr/bin/docker stop hub
-ExecStopPost=/usr/bin/docker rm hub
 
 [Install]
 WantedBy=multi-user.target
