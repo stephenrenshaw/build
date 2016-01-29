@@ -1,0 +1,13 @@
+[Unit]
+Description=Selenium Chrome Nodes
+Requires=selenium-hub.service
+After=selenium-hub.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker rm chrome
+ExecStart=/usr/bin/docker run --link hub:hub --name chrome itboffin/node-chrome
+ExecStop=/usr/bin/docker stop chrome
+
+[Install]
+WantedBy=multi-user.target
